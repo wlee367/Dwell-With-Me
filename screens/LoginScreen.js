@@ -7,12 +7,18 @@ import {
     TextInput,
     TouchableOpacity
 } from 'react-native';
+
 import { ExpoLinksView } from '@expo/samples';
-import { createUser } from '../modules/firebaseAPI';
+import * as FirebaseAPI from '../modules/firebaseAPI';
+import firebase from 'firebase';
 
 export default class LoginScreen extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     static navigationOptions = {
-        title: 'Links'
+        title: 'Login'
     };
 
     state = {
@@ -20,28 +26,27 @@ export default class LoginScreen extends React.Component {
         password: ''
     };
 
-    validateEmail(email) {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
+    componentDidMount() {
+        this.watchAuthState(this.props.navigation);
     }
 
-    handleTextChange(text) {
-        if (text == '' || text == '-') {
-            text = '0';
-        }
-        this.setState({
-            [text]: text
+    watchAuthState(navigation) {
+        firebase.auth().onAuthStateChanged(function(user) {
+            console.log('onAuthStatheChanged: ', user);
+
+            if (user) {
+                navigation.navigate('Main');
+            }
         });
     }
 
-    submit() {
-        const { email, password } = this.state;
-
-        if (this.validateEmail(email)) {
-            createUser(email, password);
-        }
+    createUser() {
+        FirebaseAPI.createUser(this.state.email, this.state.password);
     }
 
+    signIn() {
+        FirebaseAPI.signInUser(this.state.email, this.state.password);
+    }
     render() {
         return (
             <View style={styles.container}>
@@ -64,11 +69,20 @@ export default class LoginScreen extends React.Component {
                         }
                     />
                     <TouchableOpacity
-                        style={{ marginTpop: '5%' }}
-                        onPress={this.submit()}
+                        style={{ marginTop: '5%' }}
+                        onPress={() => this.signIn()}
                     >
                         <View>
-                            <Text>Submit</Text>
+                            <Text>Log In Existing</Text>
+                        </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={{ marginTop: '5%' }}
+                        onPress={() => this.createUser()}
+                    >
+                        <View>
+                            <Text>Create New User</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -88,22 +102,17 @@ const styles = StyleSheet.create({
         marginHorizontal: 50,
         paddingTop: '50%'
     },
-    text: {
-        fontSize: 17,
-        color: 'rgba(96,100,109,1)',
-        lineHeight: 24,
-        textAlign: 'center',
-        marginBottom: 10
-    },
     textInput: {
         fontSize: 17,
-        color: 'rgba(96,100, 109,1)',
         lineHeight: 24,
-        width: '100%',
-        textAlign: 'left',
-        marginBottom: 10,
-        borderColor: '#ffffff',
-        borderRightWidth: 30,
-        borderLeftWidth: 30
+        width: '75%'
+    },
+    text: {
+        fontSize: 17,
+        color: 'rgba(96,100,109, 1)',
+        lineHeight: 24,
+        width: '75%',
+        marginBottom: '10%',
+        textAlign: 'center'
     }
 });
