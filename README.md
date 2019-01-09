@@ -10,7 +10,7 @@ WishList
 
 -   [x] Create React Native App + Expo for quick set up dev env
 -   [ ] Use [FastLane](https://docs.fastlane.tools/getting-started/cross-platform/react-native/) to ship to the app store.
--   [ ] [Firebase Auth](https://medium.com/react-native-training/react-native-firebase-authentication-7652e1d2c8a2) for authentication
+-   [x] [Firebase Auth](https://www.youtube.com/watch?v=9GX96dqumRs) for authentication (sign up, login, logout, react-navigation for flow)
 -   [ ] Use [Firebase](https://blog.expo.io/how-to-build-a-chat-app-with-react-native-3ef8604ebb3c) to create Chat application
 -   [ ] [Responsive React Native Views](https://medium.com/react-native-training/build-responsive-react-native-views-for-any-device-and-support-orientation-change-1c8beba5bc23)
 -   [ ] [React Native Onboarding Swiper](https://www.npmjs.com/package/react-native-onboarding-swiper) for interactive tutorial of app on initial login
