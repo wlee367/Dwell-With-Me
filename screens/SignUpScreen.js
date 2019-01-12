@@ -10,40 +10,22 @@ import {
     Image
 } from 'react-native';
 
-import { ExpoLinksView } from '@expo/samples';
 import * as FirebaseAPI from '../modules/firebaseAPI';
 import firebase from 'firebase';
 
-export default class LoginScreen extends React.Component {
+export default class SignUpScreen extends React.component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            email: '',
+            password: ''
+        };
+
+        this.createUser = this.createUser.bind(this);
     }
-
-    static navigationOptions = {
-        title: 'Login'
-    };
-
-    state = {
-        email: '',
-        password: '',
-        register: false
-    };
-
-    componentDidMount() {
-        this.watchAuthState(this.props.navigation);
-    }
-
-    watchAuthState(navigation) {
-        firebase.auth().onAuthStateChanged(function(user) {
-            console.log('onAuthStatheChanged: ', user);
-
-            if (user) {
-                navigation.navigate('Main');
-            }
-        });
-    }
-    signIn() {
-        FirebaseAPI.signInUser(this.state.email, this.state.password);
+    createUser() {
+        FirebaseAPI.createUser(this.state.email, this.state.password);
     }
     render() {
         return (
@@ -79,14 +61,6 @@ export default class LoginScreen extends React.Component {
                         onChangeText={password => this.setState({ password })}
                     />
                 </View>
-                <TouchableHighlight
-                    style={[styles.buttonContainer, styles.loginButton]}
-                    onPress={() => this.signIn()}
-                >
-                    <View>
-                        <Text style={styles.loginText}>Log In</Text>
-                    </View>
-                </TouchableHighlight>
                 <TouchableHighlight
                     style={[styles.buttonContainer, styles.loginButton]}
                     onPress={() => this.createUser()}

@@ -16,8 +16,10 @@
     "expo": "^32.0.0",
     "firebase": "^5.7.2",
     "native-base": "^2.10.0",
+    "prop-types": "^15.6.2",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react-native-animatable": "^1.3.1",
     "react-navigation": "^3.0.9"
   },
   "devDependencies": {

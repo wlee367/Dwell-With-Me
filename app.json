@@ -24,6 +24,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "React Native chat application that only works between 20% and 85% battery life. Stay anonymous or announce your name to the world. ",
+    "githubUrl": "https://github.com/wlee367/Dwell-With-Me"
   }
 }
