@@ -23,7 +23,7 @@ export default class GetStarted extends Component {
                         color="white"
                     />
                 ) : (
-                    <Text style={styles.text}>GET STARTED</Text>
+                    <Text style={styles.text}>LOGIN</Text>
                 )}
             </TouchableOpacity>
         );

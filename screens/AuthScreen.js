@@ -9,18 +9,38 @@ import Login from './Login/Login';
 import Register from './Register/Register';
 // import ForgotPassword from './screens/ForgotPassword';
 import { w } from '../modules/Dimensions';
+import firebase from 'firebase';
 
-export default class FirebaseLogin extends Component {
+export default class AuthScreen extends Component {
     state = {
         currentScreen: 'login' // can be: 'login' or 'register' or 'forgot'
+    };
+
+    static navigationOptions = {
+        title: 'Login'
     };
 
     changeScreen = screenName => () => {
         this.setState({ currentScreen: screenName });
     };
 
-    userSuccessfullyLoggedIn = user => {
-        this.props.login(user);
+    componentDidMount() {
+        this.watchAuthState(this.props.navigation);
+    }
+
+    watchAuthState(navigation) {
+        firebase.auth().onAuthStateChanged(function(user) {
+            console.log('onAuthStatheChanged: ', user);
+
+            if (user) {
+                navigation.navigate('Main');
+            }
+        });
+    }
+
+    userSuccessfullyLoggedIn = (user, navigation) => {
+        // this.props.login(user);
+        if (user) navigation.navigate('Main');
     };
 
     render() {
@@ -61,11 +81,7 @@ export default class FirebaseLogin extends Component {
     }
 }
 
-FirebaseLogin.propTypes = {
-    login: PropTypes.func.isRequired
-};
-
-FirebaseLogin.defaultProps = {
+AuthScreen.defaultProps = {
     background: null
 };
 

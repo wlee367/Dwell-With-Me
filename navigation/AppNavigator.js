@@ -6,7 +6,6 @@ import {
 } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
-// import LoginScreen from '../screens/LoginScreen';
 import AuthScreen from '../screens/AuthScreen';
 import AuthLoadingScreen from '../screens/AuthLoadingScreen';
 

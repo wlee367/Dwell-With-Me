@@ -1,7 +1,7 @@
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
-import LoginScreen from './screens/LoginScreen';
+// import LoginScreen from './screens/LoginScreen';
 import {
     FIREBASE_API_KEY,
     FIREBASE_AUTH_DOMAIN,

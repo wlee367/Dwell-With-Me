@@ -4,6 +4,7 @@ import InputField from '../../components/InputField';
 import { w, h, totalSize } from '../../modules/Dimensions';
 import GetStarted from './GetStarted';
 import * as Firebase from '../../modules/firebaseAPI';
+import firebase from 'firebase';
 
 const companyLogo = require('../../assets/images/robot-dev.png');
 const email = require('../../assets/images/email2.png');
@@ -35,18 +36,18 @@ export default class Login extends Component {
         );
     };
 
-    changeInputFocus = name => () => {
-        if (name === 'Email') {
-            this.setState({
-                isEmailCorrect: this.email.getInputValue() === ''
-            });
-            this.password.input.focus();
-        } else {
-            this.setState({
-                isPasswordCorrect: this.password.getInputValue() === ''
-            });
-        }
-    };
+    // changeInputFocus = name => () => {
+    //     if (name === 'Email') {
+    //         this.setState({
+    //             isEmailCorrect: this.email.getInputValue() === ''
+    //         });
+    //         this.password.input.focus();
+    //     } else {
+    //         this.setState({
+    //             isPasswordCorrect: this.password.getInputValue() === ''
+    //         });
+    //     }
+    // };
 
     loginToFireBase = (email, password) => {
         this.setState({ isLogin: true });
@@ -69,7 +70,6 @@ export default class Login extends Component {
                     keyboardType="email-address"
                     style={styles.email}
                     error={this.state.isEmailCorrect}
-                    focus={this.changeInputFocus}
                     ref={ref => (this.email = ref)}
                     icon={email}
                 />
@@ -80,7 +80,6 @@ export default class Login extends Component {
                     blurOnSubmit={true}
                     error={this.state.isPasswordCorrect}
                     ref={ref => (this.password = ref)}
-                    focus={this.changeInputFocus}
                     icon={password}
                 />
                 <GetStarted

@@ -16,7 +16,6 @@ class AuthLoadingScreen extends Component {
 
     //fetch the token from storage then navigate to our appropriate place
     _bootstrapAsync = async () => {
-        const userToken = await AsyncStorage.getItem('userToken');
         console.log(firebase.auth().currentUser);
 
         this.props.navigation.navigate(false ? 'App' : 'Auth');
