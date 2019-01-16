@@ -17,7 +17,8 @@ export default class AuthScreen extends Component {
     };
 
     static navigationOptions = {
-        title: 'Login'
+        // title: 'Login'
+        header: null
     };
 
     changeScreen = screenName => () => {
@@ -30,8 +31,6 @@ export default class AuthScreen extends Component {
 
     watchAuthState(navigation) {
         firebase.auth().onAuthStateChanged(function(user) {
-            console.log('onAuthStatheChanged: ', user);
-
             if (user) {
                 navigation.navigate('Main');
             }
@@ -39,7 +38,6 @@ export default class AuthScreen extends Component {
     }
 
     userSuccessfullyLoggedIn = (user, navigation) => {
-        // this.props.login(user);
         if (user) navigation.navigate('Main');
     };
 

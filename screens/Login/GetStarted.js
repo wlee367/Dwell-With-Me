@@ -20,7 +20,7 @@ export default class GetStarted extends Component {
                     <ActivityIndicator
                         size="large"
                         style={styles.spinner}
-                        color="white"
+                        color="black"
                     />
                 ) : (
                     <Text style={styles.text}>LOGIN</Text>
@@ -37,17 +37,19 @@ GetStarted.propTypes = {
 
 const styles = StyleSheet.create({
     button: {
-        width: '85%',
+        width: w(85),
         alignSelf: 'center',
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: 'transparent',
         paddingVertical: w(2),
-        backgroundColor: '#888',
         borderRadius: w(10),
+        borderColor: '#E0E0E0',
+        borderWidth: 1,
         marginTop: h(8)
     },
     text: {
-        color: 'white',
+        color: 'black',
         fontWeight: '700',
         paddingVertical: h(1),
         fontSize: totalSize(2.1)

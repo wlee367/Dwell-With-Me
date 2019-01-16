@@ -24,7 +24,7 @@ export default class Continue extends Component {
                         color="black"
                     />
                 ) : (
-                    <Text style={styles.text}>Continue</Text>
+                    <Text style={styles.text}>REGISTER AND LOGIN</Text>
                 )}
             </TouchableOpacity>
         );

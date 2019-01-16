@@ -9,6 +9,7 @@ import firebase from 'firebase';
 const companyLogo = require('../../assets/images/robot-dev.png');
 const email = require('../../assets/images/email2.png');
 const password = require('../../assets/images/password2.png');
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default class Login extends Component {
     state = {
@@ -36,19 +37,6 @@ export default class Login extends Component {
         );
     };
 
-    // changeInputFocus = name => () => {
-    //     if (name === 'Email') {
-    //         this.setState({
-    //             isEmailCorrect: this.email.getInputValue() === ''
-    //         });
-    //         this.password.input.focus();
-    //     } else {
-    //         this.setState({
-    //             isPasswordCorrect: this.password.getInputValue() === ''
-    //         });
-    //     }
-    // };
-
     loginToFireBase = (email, password) => {
         this.setState({ isLogin: true });
         Firebase.userLogin(email, password).then(user => {
@@ -59,52 +47,56 @@ export default class Login extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <Image
-                    style={styles.icon}
-                    resizeMode="contain"
-                    source={companyLogo}
-                />
-                <InputField
-                    placeholder="Email"
-                    keyboardType="email-address"
-                    style={styles.email}
-                    error={this.state.isEmailCorrect}
-                    ref={ref => (this.email = ref)}
-                    icon={email}
-                />
-                <InputField
-                    placeholder="Password"
-                    returnKeyType="done"
-                    secureTextEntry={true}
-                    blurOnSubmit={true}
-                    error={this.state.isPasswordCorrect}
-                    ref={ref => (this.password = ref)}
-                    icon={password}
-                />
-                <GetStarted
-                    click={this.getStarted}
-                    isLogin={this.state.isLogin}
-                />
-                <View style={styles.textContainer}>
-                    <TouchableOpacity
-                        onPress={this.props.change('register')}
-                        style={styles.touchable}
-                        activeOpacity={0.6}
-                    >
-                        <Text style={styles.createAccount}>Create Account</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={this.props.change('forgot')}
-                        style={styles.touchable}
-                        activeOpacity={0.6}
-                    >
-                        <Text style={styles.forgotPassword}>
-                            Forgot Password
-                        </Text>
-                    </TouchableOpacity>
+            <KeyboardAwareScrollView>
+                <View style={styles.container}>
+                    <Image
+                        style={styles.icon}
+                        resizeMode="contain"
+                        source={companyLogo}
+                    />
+                    <InputField
+                        placeholder="Email"
+                        keyboardType="email-address"
+                        style={styles.email}
+                        error={this.state.isEmailCorrect}
+                        ref={ref => (this.email = ref)}
+                        icon={email}
+                    />
+                    <InputField
+                        placeholder="Password"
+                        returnKeyType="done"
+                        secureTextEntry={true}
+                        blurOnSubmit={true}
+                        error={this.state.isPasswordCorrect}
+                        ref={ref => (this.password = ref)}
+                        icon={password}
+                    />
+                    <GetStarted
+                        click={this.getStarted}
+                        isLogin={this.state.isLogin}
+                    />
+                    <View style={styles.textContainer}>
+                        <TouchableOpacity
+                            onPress={this.props.change('register')}
+                            style={styles.touchable}
+                            activeOpacity={0.6}
+                        >
+                            <Text style={styles.createAccount}>
+                                Create Account
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={this.props.change('forgot')}
+                            style={styles.touchable}
+                            activeOpacity={0.6}
+                        >
+                            <Text style={styles.forgotPassword}>
+                                Forgot Password
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
+            </KeyboardAwareScrollView>
         );
     }
 }
@@ -112,11 +104,12 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: h(3)
     },
     icon: {
-        width: w(70),
-        height: h(30),
+        width: w(50),
+        height: h(20),
         marginTop: h(10),
         marginBottom: h(7)
     },
