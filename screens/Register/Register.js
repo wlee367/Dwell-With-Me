@@ -55,7 +55,9 @@ export default class Register extends Component {
     createFireBaseAccount = (name, email, password) => {
         this.setState({ isCreatingAccount: true });
         Firebase.createFirebaseAccount(name, email, password).then(result => {
-            if (result) this.props.change('login')();
+            if (result) {
+                this.props.navigation.navigate('login');
+            }
             this.setState({ isCreatingAccount: false });
         });
     };
@@ -142,7 +144,8 @@ export default class Register extends Component {
                         click={this.createUserAccount}
                     />
                     <TouchableOpacity
-                        onPress={this.props.change('login')}
+                        // onPress={this.props.change('login')}
+                        onPress={() => this.props.navigation.navigate('login')}
                         style={styles.touchable}
                     >
                         <Text style={styles.signIn}>{'<'} Sign In</Text>
@@ -152,10 +155,6 @@ export default class Register extends Component {
         );
     }
 }
-
-Register.propTypes = {
-    change: PropTypes.func.isRequired
-};
 
 const styles = StyleSheet.create({
     container: {

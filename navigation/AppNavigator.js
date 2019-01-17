@@ -8,9 +8,13 @@ import {
 import MainTabNavigator from './MainTabNavigator';
 import AuthScreen from '../screens/AuthScreen';
 import AuthLoadingScreen from '../screens/AuthLoadingScreen';
+import Login from '../screens/Login/Login';
+import Register from '../screens/Register/Register';
 
 const AuthStack = createStackNavigator({
-    Login: AuthScreen
+    // Login: AuthScreen,
+    login: { screen: Login },
+    register: { screen: Register }
 });
 
 const switchNaviagtor = createSwitchNavigator(
