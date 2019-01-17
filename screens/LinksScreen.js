@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
-import AppNavigator from '../navigation/AppNavigator';
+// import AppNavigator from '../navigation/AppNavigator';
 
 export default class LinksScreen extends React.Component {
     static navigationOptions = {
@@ -9,7 +9,7 @@ export default class LinksScreen extends React.Component {
     };
 
     showMainTabs() {
-        return <AppNavigator />;
+        // return <AppNavigator />;
     }
 
     render() {

@@ -19,13 +19,16 @@ import firebase from 'firebase';
  * in this
  */
 export default class AuthScreen extends Component {
-    state = {
-        currentScreen: 'login', // can be: 'login' or 'register' or 'forgot'
-        isAnonymous: false,
-        uid: '',
-        batteryPercent: '' // I imagine this is where we keep track of their battery
-    };
+    constructor(props) {
+        super(props);
 
+        this.state = {
+            currentScreen: 'login', // can be: 'login' or 'register' or 'forgot'
+            isAnonymous: false,
+            uid: '',
+            batteryPercent: '' // I imagine this is where we keep track of their battery
+        };
+    }
     static navigationOptions = {
         // title: 'Login'
         header: null
@@ -40,22 +43,25 @@ export default class AuthScreen extends Component {
     }
 
     watchAuthState(navigation) {
-        firebase.auth().onAuthStateChanged(function(user) {
+        const that = this;
+        firebase.auth().onAuthStateChanged(user => {
             if (user) {
-                navigation.navigate('Main');
                 const isAnonymous = user.isAnonymous;
                 const uid = user.uid;
-
-                this.setState({
+                that.setState({
                     isAnonymous,
                     uid
                 });
+
+                that.userSuccessfullyLoggedIn(user, navigation);
             }
         });
     }
 
     userSuccessfullyLoggedIn = (user, navigation) => {
-        if (user) navigation.navigate('Main');
+        if (user) {
+            navigation.navigate('Main');
+        }
     };
 
     render() {

@@ -16,7 +16,8 @@ export default class Login extends Component {
     state = {
         isEmailCorrect: false,
         isPasswordCorrect: false,
-        isLogin: false
+        isLogin: false,
+        isLogin2: false
     };
 
     getStarted = () => {
@@ -40,17 +41,24 @@ export default class Login extends Component {
 
     loginToFireBase = (email, password) => {
         this.setState({ isLogin: true });
-        Firebase.userLogin(email, password).then(user => {
-            if (user) this.props.success(user);
-            this.setState({ isLogin: false });
-        });
+        Firebase.userLogin(email, password)
+            .then(user => {
+                if (user) {
+                    this.setTimeout(() => {
+                        this.setState({ isLogin: false });
+                        //this.props.success(user);
+                    });
+                }
+            })
+            .catch(err => {
+                throw Error();
+            });
     };
 
     signInAnonymous = () => {
-        console.log('signIn anonymous');
-        this.setState({ isLogin: true });
+        this.setState({ isLogin2: true });
         Firebase.signInAnonymously();
-        this.setState({ isLogin: false });
+        this.setState({ isLogin2: false });
     };
 
     render() {
@@ -85,7 +93,7 @@ export default class Login extends Component {
                     />
                     <Anonymous
                         click={this.signInAnonymous}
-                        isLogin={this.state.isLogin}
+                        isLogin={this.state.isLogin2}
                     />
                     <View style={styles.textContainer}>
                         <TouchableOpacity

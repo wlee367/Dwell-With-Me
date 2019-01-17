@@ -23,7 +23,7 @@ export default class Anonymous extends Component {
                         color="black"
                     />
                 ) : (
-                    <Text style={styles.text}>Continue Anonymously</Text>
+                    <Text style={styles.text}>CONTINUE ANONYMOUSLY</Text>
                 )}
             </TouchableOpacity>
         );

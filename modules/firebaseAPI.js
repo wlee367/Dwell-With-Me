@@ -15,6 +15,7 @@ export const signInAnonymously = () => {
         .signInAnonymously()
         .catch(err => {
             console.log(err.message);
+            throw Error();
         });
 };
 
@@ -34,6 +35,11 @@ export const userLogin = (email, password) => {
         firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
+            .then(user => {
+                if (user) {
+                    resolve(user);
+                }
+            })
             .catch(error => {
                 switch (error.code) {
                     case 'auth/invalid-email':
@@ -47,11 +53,6 @@ export const userLogin = (email, password) => {
                         console.warn('Check your internet connection');
                 }
                 resolve(null);
-            })
-            .then(user => {
-                if (user) {
-                    resolve(user);
-                }
             });
     });
 };
