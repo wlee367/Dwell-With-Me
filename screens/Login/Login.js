@@ -10,6 +10,7 @@ const companyLogo = require('../../assets/images/robot-dev.png');
 const email = require('../../assets/images/email2.png');
 const password = require('../../assets/images/password2.png');
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import Anonymous from './Anonymous';
 
 export default class Login extends Component {
     state = {
@@ -45,6 +46,13 @@ export default class Login extends Component {
         });
     };
 
+    signInAnonymous = () => {
+        console.log('signIn anonymous');
+        this.setState({ isLogin: true });
+        Firebase.signInAnonymously();
+        this.setState({ isLogin: false });
+    };
+
     render() {
         return (
             <KeyboardAwareScrollView>
@@ -73,6 +81,10 @@ export default class Login extends Component {
                     />
                     <GetStarted
                         click={this.getStarted}
+                        isLogin={this.state.isLogin}
+                    />
+                    <Anonymous
+                        click={this.signInAnonymous}
                         isLogin={this.state.isLogin}
                     />
                     <View style={styles.textContainer}>

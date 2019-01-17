@@ -9,6 +9,15 @@ export const createUser = (email, password) => {
         .catch(error => console.log('createUser error: ', error));
 };
 
+export const signInAnonymously = () => {
+    firebase
+        .auth()
+        .signInAnonymously()
+        .catch(err => {
+            console.log(err.message);
+        });
+};
+
 export const signInUser = (email, password) => {
     firebase
         .auth()

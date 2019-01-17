@@ -11,9 +11,19 @@ import Register from './Register/Register';
 import { w } from '../modules/Dimensions';
 import firebase from 'firebase';
 
+/**
+ * Eventually if we move away from Firebase, this stuff would need to be
+ * refactored to use redux for authentication
+ * But passing down the isAnonymous variable and uid from state shouldn't
+ * be hard to manage because there's only going to be so many components
+ * in this
+ */
 export default class AuthScreen extends Component {
     state = {
-        currentScreen: 'login' // can be: 'login' or 'register' or 'forgot'
+        currentScreen: 'login', // can be: 'login' or 'register' or 'forgot'
+        isAnonymous: false,
+        uid: '',
+        batteryPercent: '' // I imagine this is where we keep track of their battery
     };
 
     static navigationOptions = {
@@ -33,6 +43,13 @@ export default class AuthScreen extends Component {
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 navigation.navigate('Main');
+                const isAnonymous = user.isAnonymous;
+                const uid = user.uid;
+
+                this.setState({
+                    isAnonymous,
+                    uid
+                });
             }
         });
     }
