@@ -66,7 +66,7 @@ export default class Login extends Component {
                     this.setState({
                         isLogin: false
                     });
-                throw Error();
+                // throw Error();
             });
     };
     componentDidMount() {
@@ -186,7 +186,11 @@ export default class Login extends Component {
                                     </Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity
-                                    // onPress={this.props.change('forgot')}
+                                    onPress={() => {
+                                        this.props.navigation.navigate(
+                                            'forgotpassword'
+                                        );
+                                    }}
                                     style={styles.touchable}
                                     activeOpacity={0.6}
                                 >

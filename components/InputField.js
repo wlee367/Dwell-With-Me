@@ -5,9 +5,28 @@ import { w, h, totalSize } from '../modules/Dimensions';
 const close = require('../assets/images/close.png');
 
 export default class InputField extends Component {
-    state = {
-        text: ''
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            text: '',
+            placeholder: ''
+        };
+        this.getInputValue = this.getInputValue.bind(this);
+        this.initializeState = this.initializeState.bind(this);
+    }
+
+    initializeState() {
+        const { placeholder } = this.props;
+
+        this.setState({
+            placeholder
+        });
+    }
+
+    componentDidMount() {
+        this.initializeState();
+    }
 
     getInputValue = () => this.state.text;
 
@@ -31,9 +50,10 @@ export default class InputField extends Component {
                     underlineColorAndroid="transparent"
                     secureTextEntry={this.props.secureTextEntry}
                     blurOnSubmit={this.props.blurOnSubmit}
+                    onFocus={() => this.setState({ placeholder: '' })}
                     keyboardType={this.props.keyboardType}
                     returnKeyType={this.props.returnKeyType}
-                    placeholder={this.props.placeholder}
+                    placeholder={this.state.placeholder}
                     onSubmitEditing={this.props.focus(this.props.placeholder)}
                     placeholderTextColor="black"
                     onChangeText={text => this.setState({ text })}
@@ -76,8 +96,8 @@ const styles = StyleSheet.create({
     inputText: {
         color: 'black',
         flex: 1,
-        fontSize: totalSize(2.1),
-        marginLeft: w(3)
+        // fontSize: totalSize(2.1),
+        marginLeft: w(2)
     },
     icon: {
         marginLeft: w(4),
