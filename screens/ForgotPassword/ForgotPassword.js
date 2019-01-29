@@ -19,8 +19,8 @@ export default class ForgotPassword extends Component {
         this.sendEmailWithPassword = this.sendEmailWithPassword.bind(this);
     }
 
-    sendEmail = () => {
-        const email = this.email.getInputValue();
+    sendEmail = email => {
+        // const email = this.email.getInputValue();
         console.log(email);
         this.setState(
             {
@@ -28,7 +28,8 @@ export default class ForgotPassword extends Component {
             },
             () => {
                 if (email !== '') {
-                    this.sendEmailWithPassword(email);
+                    Firebase.sendEmailWithPassword(email);
+                    // this.sendEmailWithPassword(email);
                 } else {
                     console.warn('Enter correct e-mail address');
                 }
@@ -37,14 +38,11 @@ export default class ForgotPassword extends Component {
     };
 
     sendEmailWithPassword = email => {
-        Firebase.sendEmailWithPassword(email)
-            .then(result => {
-                console.log(result);
-                if (result) this.props.navigation.navigate('login')();
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        console.log(email);
+        Firebase.sendEmailWithPassword(email).then(result => {
+            console.log(result);
+            if (result) this.props.navigation.navigate('login')();
+        });
     };
 
     onFocusChanged = () => {
@@ -68,7 +66,7 @@ export default class ForgotPassword extends Component {
                     // onChangeText={email => this.setState({ email })}
                 />
                 <TouchableOpacity
-                    onPress={this.sendEmail}
+                    onPress={email => this.sendEmail(email)}
                     activeOpacity={0.6}
                     style={styles.button}
                 >

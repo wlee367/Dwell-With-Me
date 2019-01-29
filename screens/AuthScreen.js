@@ -6,17 +6,8 @@ import {
 } from 'react-native';
 import Login from './Login/Login';
 import Register from './Register/Register';
-// import ForgotPassword from './screens/ForgotPassword';
 import { w } from '../modules/Dimensions';
-import firebase from 'firebase';
 
-/**
- * Eventually if we move away from Firebase, this stuff would need to be
- * refactored to use redux for authentication
- * But passing down the isAnonymous variable and uid from state shouldn't
- * be hard to manage because there's only going to be so many components
- * in this
- */
 export default class AuthScreen extends Component {
     constructor(props) {
         super(props);
@@ -78,9 +69,6 @@ export default class AuthScreen extends Component {
             case 'register':
                 screenToShow = <Register change={this.changeScreen} />;
                 break;
-            // case 'forgot':
-            //     screenToShow = <ForgotPassword change={this.changeScreen} />;
-            //     break;
         }
 
         return (

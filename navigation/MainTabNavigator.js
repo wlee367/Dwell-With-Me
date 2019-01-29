@@ -15,16 +15,9 @@ const HomeStack = createStackNavigator({
 });
 
 HomeStack.navigationOptions = {
-    tabBarLabel: 'Home',
+    tabBarLabel: 'Chat',
     tabBarIcon: ({ focused }) => (
-        <TabBarIcon
-            focused={focused}
-            name={
-                Platform.OS === 'ios'
-                    ? `ios-information-circle${focused ? '' : '-outline'}`
-                    : 'md-information-circle'
-            }
-        />
+        <TabBarIcon focused={focused} name="ios-chatboxes" />
     )
 };
 
@@ -33,7 +26,7 @@ const LinksStack = createStackNavigator({
 });
 
 LinksStack.navigationOptions = {
-    tabBarLabel: 'Links',
+    tabBarLabel: 'Profile',
     tabBarIcon: ({ focused }) => (
         <TabBarIcon
             focused={focused}
@@ -46,26 +39,7 @@ LinksStack.navigationOptions = {
     )
 };
 
-const SettingsStack = createStackNavigator({
-    Settings: SettingsScreen
-});
-
-SettingsStack.navigationOptions = {
-    tabBarLabel: 'Settings',
-    tabBarIcon: ({ focused }) => (
-        <TabBarIcon
-            focused={focused}
-            name={
-                Platform.OS === 'ios'
-                    ? `ios-options${focused ? '' : ''}`
-                    : 'md-options'
-            }
-        />
-    )
-};
-
 export default createBottomTabNavigator({
     HomeStack,
-    LinksStack,
-    SettingsStack
+    LinksStack
 });

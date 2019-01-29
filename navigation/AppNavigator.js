@@ -6,17 +6,13 @@ import {
 } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
-import AuthScreen from '../screens/AuthScreen';
 import AuthLoadingScreen from '../screens/AuthLoadingScreen';
 import Login from '../screens/Login/Login';
 import Register from '../screens/Register/Register';
-import ForgotPassword from '../screens/ForgotPassword/ForgotPassword';
 
 const AuthStack = createStackNavigator({
-    // Login: AuthScreen,
     login: { screen: Login },
-    register: { screen: Register },
-    forgotpassword: { screen: ForgotPassword }
+    register: { screen: Register }
 });
 
 const switchNaviagtor = createSwitchNavigator(

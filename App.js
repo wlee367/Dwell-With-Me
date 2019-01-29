@@ -14,6 +14,8 @@ import {
 import firebase from 'firebase';
 import AppNavigator from './navigation/AppNavigator';
 
+import { withNavigation } from 'react-navigation';
+
 // Initialize Firebase
 const config = {
     apiKey: FIREBASE_API_KEY,
@@ -26,11 +28,17 @@ const config = {
 
 firebase.initializeApp(config);
 
-export default class App extends React.Component {
-    state = {
-        isLoadingComplete: false
-    };
+class App extends React.Component {
+    constructor(props) {
+        super(props);
 
+        this.state = {
+            isAnonymous: false,
+            uid: '',
+            batteryPercent: '', // I imagine this is where we keep track of their battery,
+            isLoadingComplete: false
+        };
+    }
     render() {
         if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
             return (
@@ -76,6 +84,8 @@ export default class App extends React.Component {
         this.setState({ isLoadingComplete: true });
     };
 }
+
+export default App;
 
 const styles = StyleSheet.create({
     container: {
