@@ -88,26 +88,3 @@ export const createFirebaseAccount = (name, email, password) => {
             });
     });
 };
-
-// export const sendEmailWithPassword = email => {
-//     console.log(email);
-//     console.log('hey');
-//     firebase
-//         .auth()
-//         .sendPasswordResetEmail(email)
-//         .then(() => {
-//             console.warn('Email with new password has been sent');
-//         })
-//         .catch(error => {
-//             switch (error.code) {
-//                 case 'auth/invalid-email':
-//                     console.warn('Invalid email address format');
-//                     break;
-//                 case 'auth/user-not-found':
-//                     console.warn('User with this email does not exist');
-//                     break;
-//                 default:
-//                     console.warn('Check your internet connection');
-//             }
-//         });
-// };

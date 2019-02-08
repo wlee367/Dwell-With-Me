@@ -13,6 +13,7 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 import * as firebaseAPI from '../modules/firebaseAPI';
+import Chat from '../components/Chat/Chat';
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
@@ -35,6 +36,8 @@ export default class HomeScreen extends React.Component {
                     style={styles.container}
                     contentContainerStyle={styles.contentContainer}
                 >
+                    <Chat />
+
                     <View style={styles.welcomeContainer}>
                         <Image
                             source={
