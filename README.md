@@ -22,3 +22,5 @@ WishList
         everyone
 -   [ ] Ability to disable user input outside the bounds of the battery
 -   [ ] Use [FastLane](https://docs.fastlane.tools/getting-started/cross-platform/react-native/) to ship to the app store.
+
+https://appendto.com/2017/11/build-simple-chat-app-react-native-firebase/
