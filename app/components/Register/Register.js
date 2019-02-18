@@ -8,7 +8,7 @@ import { signupUser } from '../../redux/session/index';
 
 import RegisterView from './RegisterView';
 
-const personImage = require('../../../assets/splash.png');
+const personImage = require('../../../assets/ic_person_add.png');
 
 class Register extends Component {
     static navigationOptions = {

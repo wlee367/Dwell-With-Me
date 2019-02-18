@@ -6,7 +6,7 @@ import styles from './Styles';
 
 const LogoutButtonView = props => (
     <TouchableOpacity style={styles.container} onPress={props.logout}>
-        <Image source={require('../../../assets/icon.png')} />
+        <Image source={require('../../../assets/ic_exit_to_app.png')} />
     </TouchableOpacity>
 );
 

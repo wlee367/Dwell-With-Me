@@ -50,7 +50,7 @@ class MessageListView extends Component {
                 renderItem={this.renderItem}
                 getItemLayout={this.itemLayout}
                 ListEmptyComponent={this.emptyList}
-                inverted
+                inverted={false}
             />
         );
     }

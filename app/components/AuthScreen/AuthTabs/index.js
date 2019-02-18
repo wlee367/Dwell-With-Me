@@ -1,5 +1,4 @@
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
-import React from 'react';
 
 import Login from '../../Login/Login';
 import SignUp from '../../Register/Register';

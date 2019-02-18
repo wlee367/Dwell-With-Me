@@ -12,7 +12,7 @@ class Login extends Component {
         tabBarLabel: 'login',
         tabBarIcon: ({ tintColor }) => (
             <Image
-                source={require('../../../assets/splash.png')}
+                source={require('../../../assets/ic_person_outline.png')}
                 style={{ tintColor: tintColor }}
             />
         )
