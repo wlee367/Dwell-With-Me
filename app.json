@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "src",
-    "slug": "src",
+    "name": "Dwell-With-Me",
+    "slug": "dwell-with-me",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
@@ -24,6 +24,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": ""
   }
 }

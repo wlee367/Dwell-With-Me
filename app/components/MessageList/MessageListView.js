@@ -46,11 +46,11 @@ class MessageListView extends Component {
                 style={styles.container}
                 contentContainerStyle={contentContainerStyle}
                 data={data}
-                keyExtractor={item => item.time}
+                keyExtractor={item => item.key}
                 renderItem={this.renderItem}
                 getItemLayout={this.itemLayout}
                 ListEmptyComponent={this.emptyList}
-                inverted={false}
+                inverted={true}
             />
         );
     }

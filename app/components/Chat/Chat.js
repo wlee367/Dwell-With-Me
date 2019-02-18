@@ -8,7 +8,6 @@ import ChatView from './ChatView';
 
 class Chat extends Component {
     componentDidMount() {
-        console.log(this.props);
         this.props.restore();
     }
 

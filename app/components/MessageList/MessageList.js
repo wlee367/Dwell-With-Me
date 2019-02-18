@@ -13,7 +13,13 @@ class MessageList extends Component {
     }
 
     render() {
-        const data = getChatItems(this.props.messages).reverse();
+        let data = getChatItems(this.props.messages).reverse();
+
+        Object.keys(data).map(key => {
+            const message = data[key];
+
+            message.key = key;
+        });
         return <MessageListView data={data} />;
     }
 }
