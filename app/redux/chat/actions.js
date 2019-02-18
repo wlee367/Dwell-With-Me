@@ -24,7 +24,6 @@ export const sendMessage = message => {
                 dispatch(chatMessageError(error.message));
             } else {
                 dispatch(chatMessageSuccess());
-                dispatch(loadMessages());
             }
         });
     };

@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { TouchableOpacity, Image } from 'react-native';
 
 import styles from './Styles';
+const exitIcon = require('../../../assets/ic_exit_to_app.png');
 
 const LogoutButtonView = props => (
     <TouchableOpacity style={styles.container} onPress={props.logout}>
-        <Image source={require('../../../assets/ic_exit_to_app.png')} />
+        <Image source={exitIcon} />
     </TouchableOpacity>
 );
 
