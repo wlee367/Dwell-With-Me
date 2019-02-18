@@ -1,0 +1,32 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { View, Alert } from 'react-native';
+
+import AuthTabs from './AuthTabs';
+import LoadingIndicator from './LoadingIndicator';
+
+import styles from './Styles';
+
+class AuthScreenView extends Component {
+    componentDidUpdate(prevProps) {
+        if (!prevProps.error && this.props.error) {
+            Alert.alert('error', this.props.error);
+        }
+    }
+
+    render() {
+        return (
+            <View style={styles.container}>
+                <AuthTabs />
+                {this.props.loading && <LoadingIndicator />}
+            </View>
+        );
+    }
+}
+
+AuthScreenView.propTypes = {
+    loading: PropTypes.bool.isRequired,
+    error: PropTypes.string
+};
+
+export default AuthScreenView;
