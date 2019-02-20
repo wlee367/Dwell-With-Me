@@ -14,13 +14,11 @@ WishList
 -   [x] Implement Sign In Anonymously functionality.
 -   [ ] Forgot Password functionality.
 -   [ ] Email Verification functionality.
--   [ ] [React Native Onboarding Swiper](https://www.npmjs.com/package/react-native-onboarding-swiper) for interactive tutorial of app on initial login
--   [ ] [Responsive React Native Views](https://medium.com/react-native-training/build-responsive-react-native-views-for-any-device-and-support-orientation-change-1c8beba5bc23)
--   [ ] Use [Firebase](https://blog.expo.io/how-to-build-a-chat-app-with-react-native-3ef8604ebb3c) to create Chat application
+-   [x] Use [Firebase](https://blog.expo.io/how-to-build-a-chat-app-with-react-native-3ef8604ebb3c) to create Chat application
 -   [ ] Ability to "LongPress" on a message, like or dislike
 -   [ ] Public profiles that shows how many likes or dislikes they have, must be visitable by
         everyone
 -   [ ] Ability to disable user input outside the bounds of the battery
 -   [ ] Use [FastLane](https://docs.fastlane.tools/getting-started/cross-platform/react-native/) to ship to the app store.
 
-https://appendto.com/2017/11/build-simple-chat-app-react-native-firebase/
+https://expo.io/@jlee367/dwell-with-me
