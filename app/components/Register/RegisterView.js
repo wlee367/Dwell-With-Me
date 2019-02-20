@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Form from '../Form/Form';
+import RegisterForm from '../Form/RegisterForm';
 
 const RegisterView = props => (
-    <Form buttonTitle={'signup'} onButtonPress={props.signup} />
+    <RegisterForm buttonTitle={'signup'} onButtonPress={props.signup} />
 );
 
 RegisterView.propTypes = {

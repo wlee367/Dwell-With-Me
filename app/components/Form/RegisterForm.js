@@ -22,7 +22,7 @@ import {
 
 import styles from './Styles';
 
-class Form extends Component {
+class RegisterForm extends Component {
     constructor(props) {
         super(props);
         this.state = { email: '', password: '' };
@@ -66,8 +66,20 @@ class Form extends Component {
                                 underlineColorAndroid={'transparent'}
                             />
                         </Item>
-                        <Item floatingLabel last>
+                        <Item floatingLabel>
                             <Label>Password</Label>
+                            <Input
+                                //style={styles.textInput}
+                                secureTextEntry={true}
+                                returnKeyType="done"
+                                onChangeText={this.handlePasswordChange}
+                                // value={this.state.password}
+                                underlineColorAndroid={'transparent'}
+                            />
+                        </Item>
+
+                        <Item floatingLabel last>
+                            <Label>Confirm Password</Label>
                             <Input
                                 //style={styles.textInput}
                                 secureTextEntry={true}
@@ -86,15 +98,6 @@ class Form extends Component {
                                 {this.props.buttonTitle}
                             </Text>
                         </TouchableOpacity>
-
-                        <TouchableOpacity
-                            style={styles.button}
-                            onPress={this.handleSecondButtonPress}
-                        >
-                            <Text style={styles.buttonTitle}>
-                                {this.props.secondButton}
-                            </Text>
-                        </TouchableOpacity>
                     </NativeForm>
                 </Content>
             </Container>
@@ -102,9 +105,9 @@ class Form extends Component {
     }
 }
 
-Form.propTypes = {
+RegisterForm.propTypes = {
     buttonTitle: PropTypes.string.isRequired,
     onButtonPress: PropTypes.func.isRequired
 };
 
-export default Form;
+export default RegisterForm;

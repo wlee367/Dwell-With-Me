@@ -7,19 +7,37 @@ import { getChatItems } from '../../redux/chat/selectors';
 
 import MessageListView from './MessageListView';
 
+import firebaseService from '../../services/FirebaseService';
+
 class MessageList extends Component {
     componentDidMount() {
         this.props.loadMessages();
     }
 
+    generateHex() {
+        return '#' + (Math.random().toString(16) + '000000').slice(2, 8);
+    }
+
     render() {
         let data = getChatItems(this.props.messages).reverse();
+
+        const currentUser = firebaseService.auth().currentUser;
 
         Object.keys(data).map(key => {
             const message = data[key];
 
             message.key = key;
+
+            if (!message.user.email) {
+                message.user.email = `anon${key}@dwell-with-me.com`;
+            }
+
+            message.color =
+                currentUser.email === message.user.email
+                    ? '#3399FF'
+                    : this.generateHex();
         });
+
         return <MessageListView data={data} />;
     }
 }

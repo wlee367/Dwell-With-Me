@@ -15,10 +15,22 @@ const MessageRowView = props => {
         : { marginRight: MESSAGE_TEXT_MARGIN };
     const username = isCurrentUser ? 'you' : props.message.user.email;
     const date = relativeDate(new Date(props.message.createdAt));
+
+    // const color = isCurrentUser
+    //     ? '#3399FF'
+    //     : '#' + (Math.random().toString(16) + '000000').slice(2, 8);
+
     return (
         <View style={styles.container}>
             <View
-                style={[styles.bubbleView, { alignItems: alignItems }, margin]}
+                style={[
+                    styles.bubbleView,
+                    {
+                        alignItems: alignItems,
+                        backgroundColor: props.message.color
+                    },
+                    margin
+                ]}
             >
                 <Text style={styles.userText}>{date + ' - ' + username}</Text>
                 <Text style={styles.messageText}>{props.message.text}</Text>

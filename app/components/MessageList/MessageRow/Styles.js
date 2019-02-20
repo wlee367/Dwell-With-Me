@@ -11,7 +11,7 @@ export default StyleSheet.create({
         borderRadius: 5
     },
     bubbleView: {
-        backgroundColor: '#1E90FF',
+        // backgroundColor: '#3399FF',
         flex: 1,
         borderRadius: 8,
         padding: 8

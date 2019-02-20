@@ -17,6 +17,26 @@ export const restoreSession = () => {
     };
 };
 
+export const loginAnonymously = () => {
+    return dispatch => {
+        dispatch(sessionLoading());
+
+        firebaseService
+            .auth()
+            .signInAnonymously()
+            .catch(err => {
+                dispatch(sessionError(err.message));
+            });
+
+        let unsubscribe = firebaseService.auth().onAuthStateChanged(user => {
+            if (user) {
+                dispatch(sessionSuccess(user));
+                unsubscribe();
+            }
+        });
+    };
+};
+
 export const loginUser = (email, password) => {
     return dispatch => {
         dispatch(sessionLoading());

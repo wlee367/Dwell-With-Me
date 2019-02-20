@@ -3,7 +3,7 @@ import { Image } from 'react-native';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { loginUser } from '../../redux/session/index';
+import { loginUser, loginAnonymously } from '../../redux/session/index';
 
 import LoginView from './LoginView';
 
@@ -19,7 +19,12 @@ class Login extends Component {
     };
 
     render() {
-        return <LoginView login={this.props.login} />;
+        return (
+            <LoginView
+                login={this.props.login}
+                anonymousLogin={this.props.loginAnonymously}
+            />
+        );
     }
 }
 
@@ -28,7 +33,8 @@ Login.propTypes = {
 };
 
 const mapDispatchToProps = {
-    login: loginUser
+    login: loginUser,
+    loginAnonymously: loginAnonymously
 };
 
 export default connect(

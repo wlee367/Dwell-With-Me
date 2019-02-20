@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 import Form from '../Form/Form';
 
 const LoginView = props => (
-    <Form buttonTitle={'login'} onButtonPress={props.login} />
+    <Form
+        buttonTitle={'Login'}
+        onButtonPress={props.login}
+        secondButton={'Login Anonymously'}
+        onSecondButtonPress={props.anonymousLogin}
+    />
 );
 
 LoginView.propTypes = {
