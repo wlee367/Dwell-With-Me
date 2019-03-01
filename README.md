@@ -20,5 +20,5 @@ WishList
         everyone
 -   [ ] Ability to disable user input outside the bounds of the battery
 -   [ ] Use [FastLane](https://docs.fastlane.tools/getting-started/cross-platform/react-native/) to ship to the app store.
-
-https://expo.io/@jlee367/dwell-with-me
+        https://github.com/nattatorn-dev/react-native-user-profile/blob/master/screens/Profile3/Profile.js
+        https://expo.io/@jlee367/dwell-with-me
