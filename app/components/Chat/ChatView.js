@@ -9,8 +9,6 @@ import styles from './Styles';
 
 class ChatView extends Component {
     render() {
-        // console.log(this.props);
-
         if (this.props.restoring) {
             return <ActivityIndicator style={styles.ActivityIndicator} />;
         } else {

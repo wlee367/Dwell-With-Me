@@ -16,10 +16,6 @@ const MessageRowView = props => {
     const username = isCurrentUser ? 'you' : props.message.user.name;
     const date = relativeDate(new Date(props.message.createdAt));
 
-    // const color = isCurrentUser
-    //     ? '#3399FF'
-    //     : '#' + (Math.random().toString(16) + '000000').slice(2, 8);
-
     return (
         <View style={styles.container}>
             <View
@@ -45,7 +41,7 @@ MessageRowView.propTypes = {
         createdAt: PropTypes.number.isRequired,
         text: PropTypes.string.isRequired,
         user: PropTypes.shape({
-            email: PropTypes.string.isRequired
+            email: PropTypes.string
         })
     })
 };

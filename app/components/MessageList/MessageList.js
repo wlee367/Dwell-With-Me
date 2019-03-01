@@ -14,10 +14,6 @@ class MessageList extends Component {
         this.props.loadMessages();
     }
 
-    generateHex() {
-        return '#' + (Math.random().toString(16) + '000000').slice(2, 8);
-    }
-
     render() {
         let data = getChatItems(this.props.messages).reverse();
 
@@ -28,14 +24,10 @@ class MessageList extends Component {
 
             message.key = key;
 
-            if (!message.user.email) {
-                message.user.email = `anon${key}@dwell-with-me.com`;
-            }
-
             message.color =
                 currentUser.email === message.user.email
                     ? '#3399FF'
-                    : this.generateHex();
+                    : '#25d366';
         });
 
         return <MessageListView data={data} />;

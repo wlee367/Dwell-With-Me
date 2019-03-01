@@ -37,7 +37,7 @@ export const loginAnonymously = () => {
             .signInAnonymously()
             .then(function() {
                 user = firebaseService.auth().currentUser;
-                // user.sendEmailVerification();
+                user.sendEmailVerification();
             })
             .then(function() {
                 user.updateProfile({
