@@ -1,6 +1,17 @@
 import * as types from './actionTypes';
 import firebaseService from '../../services/FirebaseService';
 
+export const generateRandomName = () => {
+    let text = '';
+    const possible =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    for (let i = 0; i < 5; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+};
+
 export const restoreSession = () => {
     return dispatch => {
         dispatch(sessionRestoring());
@@ -24,6 +35,15 @@ export const loginAnonymously = () => {
         firebaseService
             .auth()
             .signInAnonymously()
+            .then(function() {
+                user = firebaseService.auth().currentUser;
+                // user.sendEmailVerification();
+            })
+            .then(function() {
+                user.updateProfile({
+                    displayName: generateRandomName()
+                });
+            })
             .catch(err => {
                 dispatch(sessionError(err.message));
             });
@@ -57,13 +77,22 @@ export const loginUser = (email, password) => {
     };
 };
 
-export const signupUser = (email, password) => {
+export const signupUser = (email, password, name) => {
     return dispatch => {
         dispatch(sessionLoading());
 
         firebaseService
             .auth()
             .createUserWithEmailAndPassword(email, password)
+            .then(function() {
+                user = firebaseService.auth().currentUser;
+                // user.sendEmailVerification();
+            })
+            .then(function() {
+                user.updateProfile({
+                    displayName: name
+                });
+            })
             .catch(error => {
                 dispatch(sessionError(error.message));
             });

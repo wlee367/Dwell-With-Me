@@ -35,8 +35,16 @@ class RegisterForm extends Component {
             this.setState({ password: password });
         };
 
+        this.handleNameChange = name => {
+            this.setState({ name: name });
+        };
+
         this.handleButtonPress = () => {
-            this.props.onButtonPress(this.state.email, this.state.password);
+            this.props.onButtonPress(
+                this.state.email,
+                this.state.password,
+                this.state.name
+            );
         };
         this.handleSecondButtonPress = () => {
             this.props.onSecondButtonPress();
@@ -54,6 +62,18 @@ class RegisterForm extends Component {
                         <Label>Dwell With Me</Label>
                     </View>
                     <NativeForm>
+                        <Item floatingLabel>
+                            <Label>Screen Name</Label>
+                            <Input
+                                // style={styles.textInput}
+                                returnKeyType="next"
+                                keyboardType="default"
+                                autoCapitalize="none"
+                                onChangeText={this.handleNameChange}
+                                // value={this.state.email}
+                                underlineColorAndroid={'transparent'}
+                            />
+                        </Item>
                         <Item floatingLabel>
                             <Label>Email</Label>
                             <Input

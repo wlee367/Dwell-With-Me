@@ -15,7 +15,8 @@ export const sendMessage = message => {
             createdAt: createdAt,
             user: {
                 id: currentUser.uid,
-                email: currentUser.email
+                email: currentUser.email,
+                name: currentUser.displayName
             }
         };
 

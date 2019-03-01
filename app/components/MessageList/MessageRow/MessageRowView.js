@@ -13,7 +13,7 @@ const MessageRowView = props => {
     const margin = isCurrentUser
         ? { marginLeft: MESSAGE_TEXT_MARGIN }
         : { marginRight: MESSAGE_TEXT_MARGIN };
-    const username = isCurrentUser ? 'you' : props.message.user.email;
+    const username = isCurrentUser ? 'you' : props.message.user.name;
     const date = relativeDate(new Date(props.message.createdAt));
 
     // const color = isCurrentUser

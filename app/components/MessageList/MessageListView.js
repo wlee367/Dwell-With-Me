@@ -35,6 +35,7 @@ class MessageListView extends Component {
 
     render() {
         const data = this.props.data;
+        console.log(data);
         const contentContainerStyle = data.length
             ? null
             : styles.flatlistContainerStyle;
